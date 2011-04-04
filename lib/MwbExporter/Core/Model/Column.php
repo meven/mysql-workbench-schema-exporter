@@ -97,4 +97,7 @@ class Column extends Base
         return $this->config['name'];
     }
 
+    public function getLink(){
+        return $this->link;
+    }
 }
