@@ -1,4 +1,4 @@
-<?php
+ <?php
 /*
  *  The MIT License
  *
@@ -35,17 +35,24 @@ $classLoader = new SplClassLoader();
 $classLoader->setIncludePath('../lib');
 $classLoader->register();
 
+
 # create a parser
-$parser = new \MwbExporter\Core\Parser();
+$parser = new \MwbExporter\Formatter\Doctrine2\Annotation\Parser();
 
 # create a document and parse it
 $document = new \MwbExporter\Core\Workbench\Document('data/test.mwb', $parser);
 
 # create a formatter
-$formatter = new \MwbExporter\Formatter\Doctrine2\Yaml\Loader(array());
+$formatter = new \MwbExporter\Formatter\Doctrine2\Annotation\Loader(array());
 
 # format the document using the formatter
 echo $formatter->visitDocument($document);
+
+# create another formatter
+$yamlFormatter = new \MwbExporter\Formatter\Doctrine2\Yaml\Loader(array());
+
+# reformat the document using the second formatter
+echo $yamlFormatter->visitDocument($document);
 
 // show some information about used memory
 echo (memory_get_peak_usage(true) / 1024 / 1024) . " MB used\n";

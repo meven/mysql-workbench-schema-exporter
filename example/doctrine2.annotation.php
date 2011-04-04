@@ -39,13 +39,16 @@ $classLoader->register();
 // show a simple text box with the output
 echo '<textarea cols="100" rows="50">';
 
-
+# create a parser
 $parser = new \MwbExporter\Formatter\Doctrine2\Annotation\Parser();
 
+# create a document and parse it
 $document = new \MwbExporter\Core\Workbench\Document('data/test.mwb', $parser);
 
+# create a formatter
 $formatter = new \MwbExporter\Formatter\Doctrine2\Annotation\Loader(array());
 
+# format the document using the formatter
 echo $formatter->visitDocument($document);
  
 echo "</textarea>";
