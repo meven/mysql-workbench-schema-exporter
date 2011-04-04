@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Tables extends Base
+class Tables extends Base
 {
     protected $tables = array();
     
@@ -61,5 +61,8 @@ abstract class Tables extends Base
         
         \MwbExporter\Core\Registry::set($this->id, $this);
     }
-
+    
+    public function getTables(){
+        return $this->tables;
+    }
 }

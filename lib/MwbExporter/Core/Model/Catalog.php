@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Catalog extends Base
+class Catalog extends Base
 {
     protected $schemas = null;
     
@@ -37,5 +37,9 @@ abstract class Catalog extends Base
         $this->schemas = self::$parser->createSchemas($tmp[0], $this);
         
         \MwbExporter\Core\Registry::set($this->id, $this);
+    }
+    
+    public function getSchemas(){
+        return $this->schemas;
     }
 }

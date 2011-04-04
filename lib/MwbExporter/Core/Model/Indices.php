@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Indices extends Base
+class Indices extends Base
 {
     protected $indices = array();
     
@@ -38,5 +38,9 @@ abstract class Indices extends Base
         }
         
         \MwbExporter\Core\Registry::set($this->id, $this);
+    }
+    
+    public function getIndices(){
+        return $this->indices;
     }
 }

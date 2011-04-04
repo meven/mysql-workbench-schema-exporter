@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Base
+class Base
 {
     protected $id;
     protected $attributes;

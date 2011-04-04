@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Table extends Base
+class Table extends Base
 {
     protected $config      = null;
 
@@ -149,5 +149,17 @@ abstract class Table extends Base
             }
         }
         return null;
+    }
+    
+    public function getColumns(){
+        return $this->columns;
+    }
+    
+    public function getIndexes(){
+        return $this->indexes;
+    }
+    
+    public function getConfig(){
+        return $this->config;
     }
 }

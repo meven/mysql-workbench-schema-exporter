@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Schemas extends Base
+class Schemas extends Base
 {
     protected $schemas = array();
     
@@ -39,5 +39,8 @@ abstract class Schemas extends Base
         
         \MwbExporter\Core\Registry::set($this->id, $this);
     }
-
+    
+    public function getSchemas(){
+        return $this->schemas;
+    }
 }

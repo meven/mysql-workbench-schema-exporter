@@ -62,4 +62,9 @@ class Document extends Base
     {
         return $this->physicalModel->display();
     }
+    
+    public function getPhysicalModel(){
+        return $this->physicalModel;
+    }
+    
 }

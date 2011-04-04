@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Index extends Base
+class Index extends Base
 {
     protected $referencedColumn = array();
 
@@ -66,5 +66,14 @@ abstract class Index extends Base
         }
         \MwbExporter\Core\Registry::get((string)$this->data->link)->injectIndex($this);
         \MwbExporter\Core\Registry::set($this->id, $this);
+    }
+    
+    public function getConfig(){
+        return $this->config;
+    }
+    
+    public function getReferencedColumn()
+    {
+        return $this->referencedColumn;
     }
 }

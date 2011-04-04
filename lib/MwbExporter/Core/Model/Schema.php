@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Schema extends Base
+class Schema extends Base
 {
     protected $tables = null;
     protected $views = null;
@@ -50,5 +50,13 @@ abstract class Schema extends Base
     public function getName()
     {
         return $this->name;
+    }
+    
+    public function getTables(){
+        return $this->tables;
+    }
+    
+    public function getViews(){
+        return $this->views;
     }
 }

@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class View extends Base
+class View extends Base
 {
     protected $config = null;
     protected $columns = null;
@@ -62,5 +62,4 @@ abstract class View extends Base
     {
         return Helper_Pluralizer::pluralize($this->getModelName());
     }
-
 }

@@ -39,6 +39,10 @@ class PhysicalModel extends Base
         \MwbExporter\Core\Registry::set($this->id, $this);
     }
 
+    public function getCatalog(){
+        return $this->catalog;
+    }
+    
     public function display()
     {
         return $this->catalog->display();

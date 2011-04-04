@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class ForeignKeys extends Base
+class ForeignKeys extends Base
 {
     protected $foreignKeys = array();
     

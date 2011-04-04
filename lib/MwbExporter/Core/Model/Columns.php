@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Columns extends Base
+class Columns extends Base
 {
     protected $columns = array();
     

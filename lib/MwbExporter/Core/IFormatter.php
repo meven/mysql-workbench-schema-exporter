@@ -43,4 +43,5 @@ interface IFormatter {
     public function visitTables(Model\Tables $node);
     public function visitView(Model\View $node);
     public function visitViews(Model\Views $node);
+    public function visitPhysicalModel(Model\PhysicalModel $node);
 }

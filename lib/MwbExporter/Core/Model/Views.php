@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class Views extends Base
+class Views extends Base
 {
     protected $views = array();
     

@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core\Model;
 
-abstract class ForeignKey extends Base
+class ForeignKey extends Base
 {
     protected $config = null;
     
@@ -79,5 +79,8 @@ abstract class ForeignKey extends Base
     {
         return $this->owningTable;
     }
-
+        
+    public function getConfig(){
+        return $this->config;
+    }
 }
