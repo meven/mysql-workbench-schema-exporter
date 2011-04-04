@@ -29,36 +29,23 @@ error_reporting(E_ALL);
 // lets stop the time
 $start = microtime(true);
 
-
 // enable autoloading of classes
 require_once('../lib/MwbExporter/Core/SplClassLoader.php');
 $classLoader = new SplClassLoader();
 $classLoader->setIncludePath('../lib');
 $classLoader->register();
 
-// show a simple text box with the output
-echo '<textarea cols="100" rows="50">';
+$parser = new \MwbExporter\Core\Parser();
 
-    $setup = array(
-        'extendTableNameWithSchemaName' => true
-    );
+$document = new \MwbExporter\Core\Workbench\Document('data/test.mwb', $parser);
 
-    // create a formatter
-    $formatter = new \MwbExporter\Formatter\Doctrine2\Yaml\Loader($setup);
-    
-    // parse the mwb file
-    $mwb = new \MwbExporter\Core\Workbench\Document('data/test.mwb', $formatter);
-    
-    // show the export output of the mwb file
-    echo $mwb->display();
- 
-echo "</textarea>";
+$formatter = new \MwbExporter\Formatter\Doctrine2\Yaml\Loader(array());
+
+echo $formatter->visitDocument($document);
 
 // show some information about used memory
-echo "<br><br>";
-echo (memory_get_peak_usage(true) / 1024 / 1024) . " MB used";
-echo "<br>";
+echo (memory_get_peak_usage(true) / 1024 / 1024) . " MB used\n";
 
 // show the time needed to parse the mwb file
 $end = microtime(true);
-echo  sprintf('%0.3f', $end-$start) . " sec needed";
+echo  sprintf('%0.3f', $end-$start) . " sec needed\n";
