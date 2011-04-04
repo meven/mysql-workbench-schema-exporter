@@ -25,7 +25,7 @@
 
 namespace MwbExporter\Core;
 
-class Parser implements \MwbExporter\Core\IParser
+class Parser implements IParser
 {    
     public function createCatalog($parameter, \MwbExporter\Core\Model\Base $parent){
         return new Model\Catalog($parameter, $parent);

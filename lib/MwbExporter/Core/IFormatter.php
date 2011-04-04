@@ -27,7 +27,7 @@ namespace MwbExporter\Core;
 
 interface IFormatter {
 
-    public function useDatatypeConverter($type, \MwbExporter\Core\Model\Column $column);
+    public function useDatatypeConverter($type, Model\Column $column);
 
     public function visitDocument(Workbench\Document $node);
     public function visitCatalog(Model\Catalog $node);
