@@ -25,13 +25,10 @@
 
 namespace MwbExporter\Formatter\Doctrine2\Annotation\Model;
 
+use MwbExporter\Formatter\Doctrine2\Annotation\Loader;
+
 class Column extends \MwbExporter\Core\Model\Column
 {
-    public function __construct($data, $parent)
-    {
-        parent::__construct($data, $parent);
-    }
-
     public function display()
     {
         $return = array();
@@ -47,7 +44,7 @@ class Column extends \MwbExporter\Core\Model\Column
             }
 
             // set name of column
-            $tmp  .= '@Column(type=' . \MwbExporter\Core\Registry::get('formatter')->useDatatypeConverter((isset($this->link['simpleType']) ? $this->link['simpleType'] : $this->link['userType']), $this);
+            $tmp  .= '@Column(type=' . Loader::useDatatypeConverter((isset($this->link['simpleType']) ? $this->link['simpleType'] : $this->link['userType']), $this);
 
             if(!isset($this->config['isNotNull']) || $this->config['isNotNull'] != 1){
                 $tmp .= ',nullable=true';

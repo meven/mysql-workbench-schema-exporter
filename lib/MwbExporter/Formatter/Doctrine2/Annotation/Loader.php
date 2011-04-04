@@ -27,63 +27,77 @@ namespace MwbExporter\Formatter\Doctrine2\Annotation;
 
 class Loader implements \MwbExporter\Core\IFormatter
 {
-    public function __construct(array $setup=array()){
+    public function __construct(array $setup = array()){
         \MwbExporter\Core\Registry::set('config', $setup);
-    }
- 
-    public function createCatalog($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Catalog($parameter, $parent);
-    }
-
-    public function createColumn($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Column($parameter, $parent);
-    }
-
-    public function createColumns($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Columns($parameter, $parent);
-    }
-
-    public function createForeignKey($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\ForeignKey($parameter, $parent);
-    }
-
-    public function createForeignKeys($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\ForeignKeys($parameter, $parent);
-    }
-
-    public function createIndex($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Index($parameter, $parent);
-    }
-
-    public function createIndices($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Indices($parameter, $parent);
-    }
-
-    public function createSchema($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Schema($parameter, $parent);
-    }
-
-    public function createSchemas($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Schemas($parameter, $parent);
-    }
-
-    public function createTable($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Table($parameter, $parent);
-    }
-
-    public function createTables($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Tables($parameter, $parent);
-    }
-
-    public function createView($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\View($parameter, $parent);
-    }
-
-    public function createViews($parameter, \MwbExporter\Core\Model\Base $parent){
-        return new Model\Views($parameter, $parent);
     }
     
     public function useDatatypeConverter($type, \MwbExporter\Core\Model\Column $column){
         return DatatypeConverter::getType($type, $column);
+    }
+
+    public function visitDocument(\MwbExporter\Core\Workbench\Document $node){
+        return $this->visitPhysicalModel($node->getPhysicalModel());
+    }
+    
+    public function visitPhysicalModel(\MwbExporter\Core\Model\PhysicalModel $node){
+        return $this->visitCatalog($node->getCatalog());
+    }
+   
+    public function visitCatalog(\MwbExporter\Core\Model\Catalog $node){
+        return $this->visitSchemas($node->getSchemas());
+    }
+    
+    public function visitColumn(\MwbExporter\Core\Model\Column $node){
+        return $node->display();
+    }
+    
+    public function visitColumns(\MwbExporter\Core\Model\Columns $node){
+        return $node->display();
+    }
+    
+    public function visitForeignKey(\MwbExporter\Core\Model\ForeignKey $node){
+        return $node->display();
+    }
+    
+    public function visitForeignKeys(\MwbExporter\Core\Model\ForeignKeys $node){
+        return $node->display();
+    }
+    
+    public function visitIndex(\MwbExporter\Core\Model\Index $node){
+        return $node->display();
+    }
+    
+    public function visitIndices(\MwbExporter\Core\Model\Indices $node){    
+        return $node->display();
+    }
+    
+    public function visitSchema(\MwbExporter\Core\Model\Schema $node){
+        return $node->display();
+    }
+    
+    public function visitSchemas(\MwbExporter\Core\Model\Schemas $node){
+        $return = array();
+
+        foreach($node->getSchemas() as $schema){
+            $return[] = $this->visitSchema($schema);
+        }
+
+        return implode("\n", $return);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ($node);
+    }
+    
+    public function visitTable(\MwbExporter\Core\Model\Table $node){
+        return $node->display();
+    }
+    
+    public function visitTables(\MwbExporter\Core\Model\Tables $node){
+        return $node->display();
+    }
+    
+    public function visitView(\MwbExporter\Core\Model\View $node){
+        return $node->display();
+    }
+    
+    public function visitViews(\MwbExporter\Core\Model\Views $node){
+        return $node->display();
     }
 }
