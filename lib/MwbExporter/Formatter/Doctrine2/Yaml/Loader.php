@@ -88,7 +88,16 @@ class Loader implements \MwbExporter\Core\IFormatter
         return implode("\n", $return);
     }
     
-    public function visitColumns(\MwbExporter\Core\Model\Columns $node){}
+    public function visitColumns(\MwbExporter\Core\Model\Columns $node){
+        $return = array();
+        
+        $return[] = '  columns:';
+        foreach($node->getColumns() as $column){
+            $return[] = $this->visitColumn($column);
+        }
+
+        return implode("\n", $return);
+    }
     
     public function visitForeignKey(\MwbExporter\Core\Model\ForeignKey $node){
         $fkConfig = $node->getConfig();

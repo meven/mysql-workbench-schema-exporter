@@ -41,8 +41,12 @@ $parser = new \MwbExporter\Core\Parser();
 # create a document and parse it
 $document = new \MwbExporter\Core\Workbench\Document('data/test.mwb', $parser);
 
+$setup = array(
+        'extendTableNameWithSchemaName' => true
+    );
+
 # create a formatter
-$formatter = new \MwbExporter\Formatter\Doctrine2\Yaml\Loader(array());
+$formatter = new \MwbExporter\Formatter\Doctrine2\Yaml\Loader($setup);
 
 # format the document using the formatter
 echo $formatter->visitDocument($document);

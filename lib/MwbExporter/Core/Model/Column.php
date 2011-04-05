@@ -100,4 +100,8 @@ class Column extends Base
     public function getLink(){
         return $this->link;
     }
+    
+    public function isPrimary(){
+        return $this->isPrimary;
+    }
 }

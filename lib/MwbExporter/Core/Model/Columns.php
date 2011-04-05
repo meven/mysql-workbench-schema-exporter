@@ -40,4 +40,7 @@ class Columns extends Base
         \MwbExporter\Core\Registry::set($this->id, $this);
     }
 
+    public function getColumns(){
+        return $this->columns;
+    }
 }
